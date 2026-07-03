@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Business Travelers — XpressLingo</title>
+  <meta name="description" content="XpressLingo helps business travelers communicate confidently in client meetings, negotiations, and everyday moments abroad — without the awkward pause for a phrasebook." />
+  <link rel="canonical" href="https://xpresslingo.app/for-business-travelers.html" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5F8FF; color: #1A1A1A; line-height: 1.6; }
+
+    nav { background: #FFFFFF; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-size: 22px; font-weight: 700; color: #1a2e6e; text-decoration: none; }
+    .nav-logo span { color: #22C98E; }
+    .nav-links { display: flex; align-items: center; gap: 16px; }
+    .nav-link { color: #1a2e6e; font-weight: 600; font-size: 14px; text-decoration: none; }
+    .nav-link:hover { color: #6B4FE0; }
+    .nav-link.active { color: #6B4FE0; }
+    .nav-cta { background: #6B4FE0; color: #FFFFFF; padding: 10px 22px; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .nav-cta:hover { background: #5538CC; }
+    @media (max-width: 800px) { .nav-link { display: none; } nav { padding: 14px 20px; } }
+
+    .hero { text-align: center; padding: 64px 24px 30px; max-width: 780px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: #EDE9FF; color: #6B4FE0; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 9999px; margin-bottom: 20px; letter-spacing: 0.5px; }
+    .hero h1 { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 16px; color: #1a2e6e; }
+    .hero h1 span { color: #22C98E; }
+    .hero p { font-size: 18px; color: #555; }
+
+    .scenario-wrap { max-width: 960px; margin: 20px auto 0; padding: 0 24px 40px; }
+    .scenario-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .scenario-card { background: #FFFFFF; border-radius: 16px; padding: 26px; border-left: 4px solid #6B4FE0; }
+    .scenario-card .icon { font-size: 30px; margin-bottom: 10px; }
+    .scenario-card h3 { font-size: 16px; font-weight: 700; color: #1a2e6e; margin-bottom: 8px; }
+    .scenario-card p { font-size: 14.5px; color: #555; }
+
+    .why { background: #FFFFFF; padding: 60px 24px; margin: 20px 0; }
+    .why-inner { max-width: 760px; margin: 0 auto; }
+    .section-title { text-align: center; font-size: 13px; font-weight: 700; color: #6B4FE0; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+    .section-heading { text-align: center; font-size: 28px; font-weight: 700; color: #1a2e6e; margin-bottom: 32px; }
+    .why-list { display: flex; flex-direction: column; gap: 18px; }
+    .why-item { display: flex; gap: 16px; align-items: flex-start; background: #F5F8FF; border-radius: 12px; padding: 20px; }
+    .why-icon { font-size: 26px; flex-shrink: 0; }
+    .why-item h3 { font-size: 15.5px; font-weight: 700; color: #1a2e6e; margin-bottom: 4px; }
+    .why-item p { font-size: 14px; color: #555; }
+
+    .quote-wrap { max-width: 700px; margin: 40px auto; padding: 0 24px; text-align: center; }
+    .quote { background: linear-gradient(135deg, #EDE9FF, #E3FAF3); border-radius: 16px; padding: 32px; font-size: 18px; font-style: italic; color: #1a2e6e; font-weight: 600; }
+
+    .cta { padding: 60px 24px; text-align: center; background: linear-gradient(135deg, #6B4FE0 0%, #1a2e6e 100%); color: #FFFFFF; }
+    .cta h2 { font-size: 30px; font-weight: 800; margin-bottom: 12px; }
+    .cta p { font-size: 16px; opacity: 0.85; margin-bottom: 28px; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .btn-white { background: #FFFFFF; color: #6B4FE0; padding: 14px 34px; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-block; }
+    .btn-outline { border: 2px solid #FFFFFF; color: #FFFFFF; padding: 12px 30px; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-block; margin-left: 12px; }
+
+    footer { background: #1A1A1A; color: #999; text-align: center; padding: 32px 24px; font-size: 14px; }
+    footer a { color: #6B4FE0; text-decoration: none; }
+    .footer-logo { font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+    .footer-logo span { color: #22C98E; }
+
+    @media (max-width: 600px) { .hero h1 { font-size: 30px; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Xpress<span>Lingo</span></a>
+    <div class="nav-links">
+      <a href="about.html" class="nav-link">About</a>
+      <a href="features.html" class="nav-link">Features</a>
+      <a href="for-business-travelers.html" class="nav-link active">Business Travel</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="demo.html" class="nav-link">Demo</a>
+      <a href="#beta" class="nav-cta">Join Beta</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">💼 FOR BUSINESS TRAVELERS</div>
+    <h1>Walk Into Any Meeting <span>Ready to Communicate</span></h1>
+    <p>Client dinners, quick hallway introductions, taxi rides to the airport — the moments that make or break a trip aren't in the boardroom. XpressLingo helps you handle them with confidence.</p>
+  </section>
+
+  <section class="scenario-wrap">
+    <div class="scenario-grid">
+      <div class="scenario-card">
+        <div class="icon">🤝</div>
+        <h3>Client Introductions</h3>
+        <p>Greet a new contact properly, in their language, before the interpreter even sits down.</p>
+      </div>
+      <div class="scenario-card">
+        <div class="icon">🍽️</div>
+        <h3>Business Dinners</h3>
+        <p>Order confidently, understand recommendations, and navigate small talk without breaking the flow of the evening.</p>
+      </div>
+      <div class="scenario-card">
+        <div class="icon">🚕</div>
+        <h3>Getting Around</h3>
+        <p>Give directions to a driver, confirm a hotel address, or ask how far the airport is — quickly, without a data-heavy translation app fumble.</p>
+      </div>
+      <div class="scenario-card">
+        <div class="icon">📞</div>
+        <h3>Quick Local Calls</h3>
+        <p>Confirm a reservation or ask a front desk question in the local language instead of hoping they speak English.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="quote-wrap">
+    <div class="quote">"You don't need fluency to build trust. You need the right words, at the right moment — said with confidence."</div>
+  </div>
+
+  <section class="why">
+    <div class="why-inner">
+      <div class="section-title">Why Business Travelers Use XpressLingo</div>
+      <h2 class="section-heading">Built for Speed, Not Study</h2>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="why-icon">⚡</div>
+          <div><h3>No Prep Required</h3><p>You're not studying phrasebooks on the flight over. Land, set your "Country I'm In," and you're ready.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🗣️</div>
+          <div><h3>Sounds Natural, Not Robotic</h3><p>Suggested responses are context-aware — appropriate for a professional setting, not a tourist phrasebook.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🔒</div>
+          <div><h3>Discreet and Private</h3><p>No account required, no data tied to your identity — useful when you're handling sensitive business conversations.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">📶</div>
+          <div><h3>Works On the Move</h3><p>Quick 5–15 second exchanges fit between meetings, in elevators, or in the back of a taxi — no long setup.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="beta">
+    <h2>Your Next Trip, Handled</h2>
+    <p>Try a sample business conversation right now, or join the beta before your next flight.</p>
+    <a href="demo.html" class="btn-white">🎮 Try the Demo</a>
+    <a href="https://testflight.apple.com/join/XPRESSLINGO" class="btn-outline" target="_blank">Join the Beta</a>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Xpress<span>Lingo</span></div>
+    <p>Speak the World</p>
+    <br/>
+    <p>
+      <a href="/">Home</a> &nbsp;|&nbsp;
+      <a href="about.html">About</a> &nbsp;|&nbsp;
+      <a href="features.html">Features</a> &nbsp;|&nbsp;
+      <a href="for-business-travelers.html">Business Travel</a> &nbsp;|&nbsp;
+      <a href="blog.html">Blog</a> &nbsp;|&nbsp;
+      <a href="demo.html">Try Demo</a> &nbsp;|&nbsp;
+      <a href="guide.html">How It Works</a> &nbsp;|&nbsp;
+      <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
+      <a href="https://xpressable.app" target="_blank">XpressAble</a>
+    </p>
+    <br/>
+    <p>Questions? <a href="mailto:malliksanjibk@gmail.com">malliksanjibk@gmail.com</a></p>
+    <br/>
+    <p style="font-size:12px; opacity:0.6;">&copy; 2026 XpressLingo. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

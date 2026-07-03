@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features — XpressLingo</title>
+  <meta name="description" content="Real-time translation, natural response suggestions, and phonetic pronunciation coaching — everything XpressLingo does to help you speak confidently anywhere." />
+  <link rel="canonical" href="https://xpresslingo.app/features.html" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5F8FF; color: #1A1A1A; line-height: 1.6; }
+
+    nav { background: #FFFFFF; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-size: 22px; font-weight: 700; color: #1a2e6e; text-decoration: none; }
+    .nav-logo span { color: #22C98E; }
+    .nav-links { display: flex; align-items: center; gap: 16px; }
+    .nav-link { color: #1a2e6e; font-weight: 600; font-size: 14px; text-decoration: none; }
+    .nav-link:hover { color: #6B4FE0; }
+    .nav-link.active { color: #6B4FE0; }
+    .nav-cta { background: #6B4FE0; color: #FFFFFF; padding: 10px 22px; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .nav-cta:hover { background: #5538CC; }
+    @media (max-width: 800px) { .nav-link { display: none; } nav { padding: 14px 20px; } }
+
+    .hero { text-align: center; padding: 60px 24px 20px; max-width: 760px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: #EDE9FF; color: #6B4FE0; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 9999px; margin-bottom: 18px; letter-spacing: 0.5px; }
+    .hero h1 { font-size: 42px; font-weight: 800; line-height: 1.15; margin-bottom: 14px; color: #1a2e6e; }
+    .hero h1 span { color: #22C98E; }
+    .hero p { font-size: 17px; color: #444; }
+
+    .feature-row { max-width: 1040px; margin: 0 auto; padding: 40px 24px; display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
+    .feature-row.reverse { flex-direction: row-reverse; }
+    .feature-visual { flex: 1; min-width: 280px; background: #FFFFFF; border-radius: 20px; padding: 36px; text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+    .feature-visual .big-icon { font-size: 56px; margin-bottom: 12px; }
+    .feature-text { flex: 1; min-width: 280px; }
+    .feature-text .tag { display: inline-block; background: #E3FAF3; color: #22C98E; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 9999px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .feature-text h2 { font-size: 26px; font-weight: 700; color: #1a2e6e; margin-bottom: 14px; }
+    .feature-text p { font-size: 15.5px; color: #444; margin-bottom: 12px; }
+    .feature-text ul { padding-left: 20px; }
+    .feature-text li { font-size: 15px; color: #333; margin-bottom: 6px; }
+
+    .grid-section { max-width: 1040px; margin: 40px auto; padding: 0 24px 40px; }
+    .section-title { text-align: center; font-size: 13px; font-weight: 700; color: #6B4FE0; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+    .section-heading { text-align: center; font-size: 28px; font-weight: 700; color: #1a2e6e; margin-bottom: 32px; }
+    .mini-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+    .mini-card { background: #FFFFFF; border-radius: 14px; padding: 22px; }
+    .mini-card .icon { font-size: 28px; margin-bottom: 10px; }
+    .mini-card h3 { font-size: 15px; font-weight: 700; color: #1a2e6e; margin-bottom: 6px; }
+    .mini-card p { font-size: 13.5px; color: #555; }
+
+    .lang-strip { background: #FFFFFF; padding: 40px 24px; text-align: center; margin: 20px 0; }
+    .lang-strip h2 { font-size: 22px; color: #1a2e6e; margin-bottom: 20px; }
+    .lang-pills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 760px; margin: 0 auto; }
+    .lang-pill { background: #F5F8FF; border-radius: 9999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: #1a2e6e; }
+
+    .cta { padding: 60px 24px; text-align: center; background: linear-gradient(135deg, #6B4FE0 0%, #1a2e6e 100%); color: #FFFFFF; }
+    .cta h2 { font-size: 30px; font-weight: 800; margin-bottom: 12px; }
+    .cta p { font-size: 16px; opacity: 0.85; margin-bottom: 28px; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .btn-white { background: #FFFFFF; color: #6B4FE0; padding: 14px 34px; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-block; }
+    .btn-outline { border: 2px solid #FFFFFF; color: #FFFFFF; padding: 12px 30px; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-block; margin-left: 12px; }
+
+    footer { background: #1A1A1A; color: #999; text-align: center; padding: 32px 24px; font-size: 14px; }
+    footer a { color: #6B4FE0; text-decoration: none; }
+    .footer-logo { font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+    .footer-logo span { color: #22C98E; }
+
+    @media (max-width: 600px) { .hero h1 { font-size: 30px; } .feature-row, .feature-row.reverse { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Xpress<span>Lingo</span></a>
+    <div class="nav-links">
+      <a href="about.html" class="nav-link">About</a>
+      <a href="features.html" class="nav-link active">Features</a>
+      <a href="for-business-travelers.html" class="nav-link">Business Travel</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="demo.html" class="nav-link">Demo</a>
+      <a href="#beta" class="nav-cta">Join Beta</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">✨ FEATURES</div>
+    <h1>Everything You Need to <span>Speak Confidently</span></h1>
+    <p>No phrasebooks. No fumbling. Just real conversations, in real time.</p>
+  </section>
+
+  <section class="feature-row">
+    <div class="feature-visual"><div class="big-icon">🌍</div><strong>Detected: Japanese</strong></div>
+    <div class="feature-text">
+      <div class="tag">Real-Time Understanding</div>
+      <h2>Instant Language Detection</h2>
+      <p>Tap once, and XpressLingo listens. It automatically identifies whatever language is being spoken — no need to tell it what to expect.</p>
+      <ul>
+        <li>Works with any language Whisper can recognize, not just a fixed list</li>
+        <li>Shows exactly what was said, with an instant English translation</li>
+        <li>Set "Country I'm In" once, and it's ready before anyone even speaks</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="feature-row reverse">
+    <div class="feature-visual"><div class="big-icon">💬</div><strong>Suggested: "Thank you, I'll head that way."</strong></div>
+    <div class="feature-text">
+      <div class="tag">Natural Responses</div>
+      <h2>Know What to Say Back</h2>
+      <p>XpressLingo doesn't just translate — it suggests a natural, appropriate response, so you're never stuck staring at a screen wondering what to say.</p>
+      <ul>
+        <li>Context-aware suggestions, not robotic word-for-word translations</li>
+        <li>Don't like the suggestion? Record your own reply instead</li>
+        <li>Every response is translated and ready to speak aloud</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="feature-row">
+    <div class="feature-visual"><div class="big-icon">🗣️</div><strong>Ah-ree-gah-toh, soh-chee-rah nee ee-kee-mahs.</strong></div>
+    <div class="feature-text">
+      <div class="tag">Pronunciation Coaching</div>
+      <h2>Say It, Don't Just Read It</h2>
+      <p>Every response comes with a phonetic spelling you can actually read aloud — plus a tap-to-hear playback so you know exactly how it should sound.</p>
+      <ul>
+        <li>Phonetic pronunciation written in your own alphabet</li>
+        <li>One-tap audio playback for every phrase</li>
+        <li>Builds real confidence over repeated use, not just one-off lookups</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="grid-section">
+    <div class="section-title">More Under the Hood</div>
+    <h2 class="section-heading">Built for Real Trips, Not Demos</h2>
+    <div class="mini-grid">
+      <div class="mini-card"><div class="icon">⏱</div><h3>Flexible Recording Length</h3><p>Choose 5, 10, or 15 seconds depending on the conversation — quick greetings vs. longer explanations.</p></div>
+      <div class="mini-card"><div class="icon">📜</div><h3>Conversation History</h3><p>Every exchange is saved so you can look back — great for learning phrases you use often.</p></div>
+      <div class="mini-card"><div class="icon">👍</div><h3>Rate & Improve</h3><p>Mark responses as good or needing work, and suggest better ones — helping XpressLingo get smarter over time.</p></div>
+      <div class="mini-card"><div class="icon">🔒</div><h3>Privacy First</h3><p>No accounts, no names, no GPS tracking — just an anonymous device ID and the conversations you choose to have.</p></div>
+      <div class="mini-card"><div class="icon">🌐</div><h3>9 Interface Languages</h3><p>Use the app itself in English, Español, Français, हिंदी, 中文, Português, 日本語, বাংলা, or தமிழ்.</p></div>
+      <div class="mini-card"><div class="icon">📍</div><h3>Location-Aware</h3><p>Tell it where you are, and it's ready to help you start a conversation before anyone's said a word.</p></div>
+    </div>
+  </section>
+
+  <section class="lang-strip">
+    <h2>Tested Across Major Languages</h2>
+    <div class="lang-pills">
+      <div class="lang-pill">🇨🇳 Chinese</div>
+      <div class="lang-pill">🇯🇵 Japanese</div>
+      <div class="lang-pill">🇰🇷 Korean</div>
+      <div class="lang-pill">🇪🇸 Spanish</div>
+      <div class="lang-pill">🇫🇷 French</div>
+      <div class="lang-pill">🇩🇪 German</div>
+      <div class="lang-pill">🇮🇹 Italian</div>
+      <div class="lang-pill">🇵🇹 Portuguese</div>
+      <div class="lang-pill">🇮🇳 Hindi</div>
+      <div class="lang-pill">🇧🇩 Bengali</div>
+      <div class="lang-pill">🇱🇰 Tamil</div>
+      <div class="lang-pill">🇹🇭 Thai</div>
+    </div>
+  </section>
+
+  <section class="cta" id="beta">
+    <h2>See It for Yourself</h2>
+    <p>Try a few sample conversations right now, or join the beta and take it on your next trip.</p>
+    <a href="demo.html" class="btn-white">🎮 Try the Demo</a>
+    <a href="https://testflight.apple.com/join/XPRESSLINGO" class="btn-outline" target="_blank">Join the Beta</a>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Xpress<span>Lingo</span></div>
+    <p>Speak the World</p>
+    <br/>
+    <p>
+      <a href="/">Home</a> &nbsp;|&nbsp;
+      <a href="about.html">About</a> &nbsp;|&nbsp;
+      <a href="features.html">Features</a> &nbsp;|&nbsp;
+      <a href="for-business-travelers.html">Business Travel</a> &nbsp;|&nbsp;
+      <a href="blog.html">Blog</a> &nbsp;|&nbsp;
+      <a href="demo.html">Try Demo</a> &nbsp;|&nbsp;
+      <a href="guide.html">How It Works</a> &nbsp;|&nbsp;
+      <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
+      <a href="https://xpressable.app" target="_blank">XpressAble</a>
+    </p>
+    <br/>
+    <p>Questions? <a href="mailto:malliksanjibk@gmail.com">malliksanjibk@gmail.com</a></p>
+    <br/>
+    <p style="font-size:12px; opacity:0.6;">&copy; 2026 XpressLingo. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

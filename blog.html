@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — XpressLingo</title>
+  <meta name="description" content="Tips, stories, and language notes for travelers — from the team building XpressLingo." />
+  <link rel="canonical" href="https://xpresslingo.app/blog.html" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5F8FF; color: #1A1A1A; line-height: 1.6; }
+
+    nav { background: #FFFFFF; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-size: 22px; font-weight: 700; color: #1a2e6e; text-decoration: none; }
+    .nav-logo span { color: #22C98E; }
+    .nav-links { display: flex; align-items: center; gap: 16px; }
+    .nav-link { color: #1a2e6e; font-weight: 600; font-size: 14px; text-decoration: none; }
+    .nav-link:hover { color: #6B4FE0; }
+    .nav-link.active { color: #6B4FE0; }
+    .nav-cta { background: #6B4FE0; color: #FFFFFF; padding: 10px 22px; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .nav-cta:hover { background: #5538CC; }
+    @media (max-width: 800px) { .nav-link { display: none; } nav { padding: 14px 20px; } }
+
+    .hero { text-align: center; padding: 56px 24px 16px; max-width: 720px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: #EDE9FF; color: #6B4FE0; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 9999px; margin-bottom: 18px; letter-spacing: 0.5px; }
+    .hero h1 { font-size: 38px; font-weight: 800; margin-bottom: 10px; color: #1a2e6e; }
+    .hero h1 span { color: #22C98E; }
+    .hero p { font-size: 16px; color: #444; }
+
+    .layout { max-width: 1040px; margin: 30px auto 0; padding: 0 24px 60px; display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap; }
+    .main-col { flex: 2; min-width: 320px; }
+    .side-col { flex: 1; min-width: 260px; }
+
+    .featured-post { background: #FFFFFF; border-radius: 20px; padding: 32px; margin-bottom: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+    .post-tag { display: inline-block; background: #E3FAF3; color: #22C98E; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 9999px; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .featured-post h2 { font-size: 24px; font-weight: 700; color: #1a2e6e; margin-bottom: 8px; line-height: 1.3; }
+    .post-meta { font-size: 13px; color: #999; margin-bottom: 18px; }
+    .featured-body p { font-size: 15px; color: #333; margin-bottom: 14px; }
+    .featured-body h3 { font-size: 17px; color: #1a2e6e; margin: 20px 0 8px; }
+    .post-footer { margin-top: 20px; padding-top: 16px; border-top: 1px solid #F0F0F0; }
+    .post-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .post-tag-pill { background: #F5F8FF; color: #6B4FE0; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 9999px; }
+
+    .post-card { background: #FFFFFF; border-radius: 16px; padding: 24px 28px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 18px; }
+    .post-card .tag { display: inline-block; background: #F0F4FF; color: #6B4FE0; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; text-transform: uppercase; }
+    .post-card h3 { font-size: 17px; font-weight: 700; color: #1a2e6e; margin-bottom: 8px; line-height: 1.35; }
+    .post-card p { font-size: 14px; color: #666; margin-bottom: 12px; }
+    .post-card .coming { font-size: 12px; font-weight: 600; color: #22C98E; background: #E3FAF3; padding: 3px 10px; border-radius: 999px; display: inline-block; }
+
+    .sidebar-card { background: #FFFFFF; border-radius: 16px; padding: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
+    .sidebar-card h3 { font-size: 16px; font-weight: 700; color: #1a2e6e; margin-bottom: 14px; }
+    .sidebar-card p { font-size: 14px; color: #555; margin-bottom: 16px; }
+    .sidebar-card a.btn { background: #6B4FE0; color: #FFFFFF; padding: 10px 20px; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 13px; display: inline-block; }
+
+    footer { background: #1A1A1A; color: #999; text-align: center; padding: 32px 24px; font-size: 14px; }
+    footer a { color: #6B4FE0; text-decoration: none; }
+    .footer-logo { font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+    .footer-logo span { color: #22C98E; }
+
+    @media (max-width: 600px) { .hero h1 { font-size: 28px; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Xpress<span>Lingo</span></a>
+    <div class="nav-links">
+      <a href="about.html" class="nav-link">About</a>
+      <a href="features.html" class="nav-link">Features</a>
+      <a href="for-business-travelers.html" class="nav-link">Business Travel</a>
+      <a href="blog.html" class="nav-link active">Blog</a>
+      <a href="demo.html" class="nav-link">Demo</a>
+      <a href="index.html#beta" class="nav-cta">Join Beta</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">✍️ THE BLOG</div>
+    <h1>Notes From the <span>Road</span></h1>
+    <p>Language tips, travel stories, and the occasional behind-the-scenes look at how XpressLingo gets built.</p>
+  </section>
+
+  <div class="layout">
+    <div class="main-col">
+
+      <article class="featured-post">
+        <div class="post-tag">⭐ First Post</div>
+        <h2>Why We Built XpressLingo (and What We Learned Along the Way)</h2>
+        <div class="post-meta">July 2026 · 4 min read</div>
+        <div class="featured-body">
+          <p>Every traveler knows the moment: you're standing in front of someone, you know exactly what you want to say, and the words just aren't there. Phrasebooks help a little. Generic translation apps help more, but they're built for reading, not speaking — and there's a real difference between seeing a translation and actually saying it out loud with confidence.</p>
+          <h3>Starting From a Real Problem</h3>
+          <p>XpressLingo grew out of a related project — XpressAble, an app built to help a child find the right words in everyday conversation. The same idea kept coming back: the right word, offered at the right moment, changes everything. We wanted to bring that same gentle nudge to travelers.</p>
+          <h3>What's Next</h3>
+          <p>We're just getting started. Expect posts on language-learning tips, real traveler stories, and updates as new features roll out.</p>
+        </div>
+        <div class="post-footer">
+          <div class="post-tags">
+            <span class="post-tag-pill">Travel</span>
+            <span class="post-tag-pill">Language Learning</span>
+            <span class="post-tag-pill">Behind the Scenes</span>
+          </div>
+        </div>
+      </article>
+
+      <div class="post-card">
+        <div class="tag">Travel Tips</div>
+        <h3>10 Phrases Every Traveler Should Know Before Landing</h3>
+        <p>The handful of phrases that make the first hour in a new country dramatically smoother.</p>
+        <span class="coming">Coming Soon</span>
+      </div>
+
+      <div class="post-card">
+        <div class="tag">Language Notes</div>
+        <h3>Why Phonetic Pronunciation Beats Memorizing Grammar Rules</h3>
+        <p>You don't need to conjugate a verb correctly to be understood — you need to sound close enough, with confidence.</p>
+        <span class="coming">Coming Soon</span>
+      </div>
+
+      <div class="post-card">
+        <div class="tag">Product</div>
+        <h3>Inside XpressLingo: How Language Detection Actually Works</h3>
+        <p>A behind-the-scenes look at how the app identifies what language is being spoken, in real time.</p>
+        <span class="coming">Coming Soon</span>
+      </div>
+
+    </div>
+
+    <div class="side-col">
+      <div class="sidebar-card">
+        <h3>🎮 Try It Yourself</h3>
+        <p>See a real conversation flow through XpressLingo, right in your browser — no download needed.</p>
+        <a href="demo.html" class="btn">Try the Demo</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>📖 New to XpressLingo?</h3>
+        <p>Get a full walkthrough of every button and screen in the app.</p>
+        <a href="guide.html" class="btn">How It Works</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>✈️ Join the Beta</h3>
+        <p>Take XpressLingo with you on your next trip — free while in beta.</p>
+        <a href="https://testflight.apple.com/join/XPRESSLINGO" class="btn" target="_blank">Join on TestFlight</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Xpress<span>Lingo</span></div>
+    <p>Speak the World</p>
+    <br/>
+    <p>
+      <a href="/">Home</a> &nbsp;|&nbsp;
+      <a href="about.html">About</a> &nbsp;|&nbsp;
+      <a href="features.html">Features</a> &nbsp;|&nbsp;
+      <a href="for-business-travelers.html">Business Travel</a> &nbsp;|&nbsp;
+      <a href="blog.html">Blog</a> &nbsp;|&nbsp;
+      <a href="demo.html">Try Demo</a> &nbsp;|&nbsp;
+      <a href="guide.html">How It Works</a> &nbsp;|&nbsp;
+      <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
+      <a href="https://xpressable.app" target="_blank">XpressAble</a>
+    </p>
+    <br/>
+    <p>Questions? <a href="mailto:malliksanjibk@gmail.com">malliksanjibk@gmail.com</a></p>
+    <br/>
+    <p style="font-size:12px; opacity:0.6;">&copy; 2026 XpressLingo. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

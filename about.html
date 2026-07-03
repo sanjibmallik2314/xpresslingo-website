@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — XpressLingo</title>
+  <meta name="description" content="Why we built XpressLingo — a real-time travel translation app that helps you speak confidently, anywhere in the world." />
+  <link rel="canonical" href="https://xpresslingo.app/about.html" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5F8FF; color: #1A1A1A; line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav { background: #FFFFFF; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-size: 22px; font-weight: 700; color: #1a2e6e; text-decoration: none; }
+    .nav-logo span { color: #22C98E; }
+    .nav-links { display: flex; align-items: center; gap: 16px; }
+    .nav-link { color: #1a2e6e; font-weight: 600; font-size: 14px; text-decoration: none; }
+    .nav-link:hover { color: #6B4FE0; }
+    .nav-link.active { color: #6B4FE0; }
+    .nav-cta { background: #6B4FE0; color: #FFFFFF; padding: 10px 22px; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .nav-cta:hover { background: #5538CC; }
+    @media (max-width: 760px) { .nav-link { display: none; } nav { padding: 14px 20px; } }
+
+    /* ── HERO ── */
+    .hero { text-align: center; padding: 56px 24px 20px; max-width: 720px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: #EDE9FF; color: #6B4FE0; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 9999px; margin-bottom: 18px; letter-spacing: 0.5px; }
+    .hero h1 { font-size: 40px; font-weight: 800; line-height: 1.15; margin-bottom: 14px; color: #1a2e6e; }
+    .hero h1 span { color: #22C98E; }
+    .hero-description { font-size: 17px; color: #444; }
+
+    /* ── STORY ── */
+    .story-wrap { max-width: 720px; margin: 0 auto; padding: 20px 24px 20px; }
+    .story-wrap p { font-size: 16px; color: #333; margin-bottom: 18px; }
+    .story-wrap p strong { color: #1a2e6e; }
+
+    .pull-quote { background: #FFFFFF; border-left: 4px solid #6B4FE0; border-radius: 12px; padding: 22px 26px; margin: 28px 0; font-size: 17px; color: #1a2e6e; font-weight: 600; font-style: italic; }
+
+    /* ── VALUES ── */
+    .values-wrap { max-width: 960px; margin: 20px auto 0; padding: 20px 24px 60px; }
+    .section-title { text-align: center; font-size: 13px; font-weight: 700; color: #6B4FE0; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+    .section-heading { text-align: center; font-size: 26px; font-weight: 700; color: #1a2e6e; margin-bottom: 32px; }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .value-card { background: #FFFFFF; border-radius: 14px; padding: 24px 22px; text-align: center; }
+    .value-icon { font-size: 32px; margin-bottom: 12px; }
+    .value-card h3 { font-size: 16px; font-weight: 700; color: #1a2e6e; margin-bottom: 8px; }
+    .value-card p { font-size: 14px; color: #555; }
+
+    /* ── FOUNDER ── */
+    .founder-wrap { max-width: 720px; margin: 0 auto; padding: 20px 24px 60px; }
+    .founder-card { background: #FFFFFF; border-radius: 16px; padding: 32px 28px; display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+    .founder-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #6B4FE0, #22C98E); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 24px; font-weight: 800; }
+    .founder-text h3 { font-size: 17px; color: #1a2e6e; margin-bottom: 6px; }
+    .founder-text p { font-size: 14.5px; color: #555; }
+
+    /* ── FAMILY ── */
+    .family-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 60px; text-align: center; }
+    .family-card { background: linear-gradient(135deg, #EDE9FF, #E3FAF3); border-radius: 16px; padding: 28px; }
+    .family-card h3 { font-size: 18px; color: #1a2e6e; margin-bottom: 10px; }
+    .family-card p { font-size: 14.5px; color: #444; margin-bottom: 16px; }
+    .family-link { color: #6B4FE0; font-weight: 700; text-decoration: none; }
+
+    /* ── CTA ── */
+    .cta { padding: 60px 24px; text-align: center; background: linear-gradient(135deg, #6B4FE0 0%, #1a2e6e 100%); color: #FFFFFF; }
+    .cta h2 { font-size: 30px; font-weight: 800; margin-bottom: 12px; }
+    .cta p { font-size: 16px; opacity: 0.85; margin-bottom: 28px; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .btn-white { background: #FFFFFF; color: #6B4FE0; padding: 14px 34px; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-block; }
+
+    footer { background: #1A1A1A; color: #999; text-align: center; padding: 32px 24px; font-size: 14px; }
+    footer a { color: #6B4FE0; text-decoration: none; }
+    .footer-logo { font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+    .footer-logo span { color: #22C98E; }
+
+    @media (max-width: 600px) { .hero h1 { font-size: 30px; } .founder-card { flex-direction: column; align-items: center; text-align: center; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">Xpress<span>Lingo</span></a>
+    <div class="nav-links">
+      <a href="about.html" class="nav-link active">About</a>
+      <a href="features.html" class="nav-link">Features</a>
+      <a href="for-business-travelers.html" class="nav-link">Business Travel</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="demo.html" class="nav-link">Demo</a>
+      <a href="#beta" class="nav-cta">Join Beta</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">👋 OUR STORY</div>
+    <h1>Why We Built Xpress<span>Lingo</span></h1>
+    <p class="hero-description">A tool born from a simple frustration: the moment you need the right words most is exactly when they're hardest to find.</p>
+  </section>
+
+  <!-- STORY -->
+  <section class="story-wrap">
+    <p>XpressLingo started as a spinoff of another project close to our hearts: <strong>XpressAble</strong>, an app we built to help a child close to us find words in everyday conversation. That project taught us something simple but powerful — that the right word, offered gently and at the right moment, can turn a frustrating silence into a real connection.</p>
+
+    <p>We realized the same problem shows up constantly for travelers. You land in a new country, and suddenly the everyday things — asking for directions, ordering food, thanking someone for their help — become genuinely hard. Not because you don't know what you want to say, but because you don't know how to say it, and there's no time to fumble through a phrasebook while someone is standing in front of you, waiting.</p>
+
+    <div class="pull-quote">"XpressLingo doesn't just translate what's said to you — it helps you speak first, with confidence, in a language that isn't your own."</div>
+
+    <p>We built XpressLingo on the same foundation as XpressAble — real-time speech understanding, natural suggested responses, and a focus on getting you talking quickly rather than burying you in menus and settings. Tap a button, and it listens. It tells you what was said, gives you a natural way to respond, and shows you exactly how to say it — phonetically, out loud, right when you need it.</p>
+
+    <p>It's still early. We're a small, independent team building this one conversation at a time, testing it on real trips, real train stations, and real dinner tables. Every exchange you have with XpressLingo helps make the next traveler's conversation a little smoother.</p>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values-wrap">
+    <div class="section-title">What We Believe</div>
+    <h2 class="section-heading">Built Around a Few Simple Ideas</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🗣️</div>
+        <h3>Speak, Don't Just Read</h3>
+        <p>A phrasebook shows you words. XpressLingo helps you actually say them, with pronunciation you can hear and repeat.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">⚡</div>
+        <h3>Fast, Not Fussy</h3>
+        <p>Real conversations don't wait. One tap to listen, one tap to respond — no digging through menus mid-conversation.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌍</div>
+        <h3>Made for the Real World</h3>
+        <p>Built and tested on actual trips — greetings, prices, directions, recommendations — the moments that come up again and again.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔒</div>
+        <h3>Privacy First</h3>
+        <p>No names, no accounts, no GPS tracking. Just an anonymous device ID and the conversations you choose to have.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="founder-wrap">
+    <div class="section-title" style="margin-bottom: 20px;">Who's Behind It</div>
+    <div class="founder-card">
+      <div class="founder-avatar">S</div>
+      <div class="founder-text">
+        <h3>Built by a Solo Founder</h3>
+        <p>XpressLingo is designed, built, and maintained independently — from the translation logic to the app store listing to this website you're reading right now. It grew out of a genuine need, not a business plan, and that's still what shapes every feature we add.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAMILY -->
+  <section class="family-wrap">
+    <div class="family-card">
+      <h3>🤝 Part of the Xpress Family</h3>
+      <p>XpressLingo shares its foundation with XpressAble, an AI communication app that helps children find words in conversation.</p>
+      <a href="https://xpressable.app" class="family-link" target="_blank">Visit XpressAble ↗</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="beta">
+    <h2>Come try it with us</h2>
+    <p>We're still building, and every early tester helps shape where this goes next.</p>
+    <a href="https://testflight.apple.com/join/XPRESSLINGO" class="btn-white" target="_blank">Join the Beta on TestFlight</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Xpress<span>Lingo</span></div>
+    <p>Speak the World</p>
+    <br/>
+    <p>
+      <a href="/">Home</a> &nbsp;|&nbsp;
+      <a href="about.html">About</a> &nbsp;|&nbsp;
+      <a href="features.html">Features</a> &nbsp;|&nbsp;
+      <a href="for-business-travelers.html">Business Travel</a> &nbsp;|&nbsp;
+      <a href="blog.html">Blog</a> &nbsp;|&nbsp;
+      <a href="demo.html">Try Demo</a> &nbsp;|&nbsp;
+      <a href="guide.html">How It Works</a> &nbsp;|&nbsp;
+      <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
+      <a href="https://xpressable.app" target="_blank">XpressAble</a>
+    </p>
+    <br/>
+    <p>Questions? <a href="mailto:malliksanjibk@gmail.com">malliksanjibk@gmail.com</a></p>
+    <br/>
+    <p style="font-size:12px; opacity:0.6;">&copy; 2026 XpressLingo. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Try the Demo — XpressLingo</title>
+  <meta name="description" content="Try XpressLingo right in your browser. Pick a language, choose a common traveler question, and see exactly how translation, suggested responses, and pronunciation coaching work." />
+  <link rel="canonical" href="https://xpresslingo.app/demo.html" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #F5F8FF;
+      color: #1A1A1A;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: #FFFFFF; padding: 16px 40px; display: flex; justify-content: space-between;
+      align-items: center; box-shadow: 0 1px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-size: 22px; font-weight: 700; color: #1a2e6e; text-decoration: none; }
+    .nav-logo span { color: #22C98E; }
+    .nav-links { display: flex; align-items: center; gap: 16px; }
+    .nav-link { color: #1a2e6e; font-weight: 600; font-size: 14px; text-decoration: none; }
+    .nav-link:hover { color: #6B4FE0; }
+    .nav-link.active { color: #6B4FE0; }
+    .nav-cta { background: #6B4FE0; color: #FFFFFF; padding: 10px 22px; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .nav-cta:hover { background: #5538CC; }
+    @media (max-width: 700px) { .nav-link { display: none; } nav { padding: 14px 20px; } }
+
+    /* ── HERO ── */
+    .hero { text-align: center; padding: 56px 24px 16px; max-width: 760px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-block; background: #EDE9FF; color: #6B4FE0; font-size: 13px; font-weight: 600;
+      padding: 6px 16px; border-radius: 9999px; margin-bottom: 18px; letter-spacing: 0.5px;
+    }
+    .hero h1 { font-size: 40px; font-weight: 800; line-height: 1.15; margin-bottom: 10px; color: #1a2e6e; }
+    .hero h1 span { color: #22C98E; }
+    .hero-description { font-size: 16px; color: #444; margin-bottom: 4px; }
+
+    /* ── STEP 1: LANGUAGE PICKER ── */
+    .demo-wrap { max-width: 1040px; margin: 0 auto; padding: 32px 24px 80px; }
+
+    .step-label {
+      text-align: center; font-size: 13px; font-weight: 700; color: #6B4FE0;
+      text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 12px;
+    }
+
+    .lang-picker { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 32px; }
+    .lang-btn {
+      background: #FFFFFF; border: 2px solid #E0DFFA; color: #1a2e6e; font-size: 14px; font-weight: 600;
+      padding: 9px 18px; border-radius: 9999px; cursor: pointer; transition: all 0.15s;
+    }
+    .lang-btn:hover { border-color: #6B4FE0; }
+    .lang-btn.active { background: #6B4FE0; border-color: #6B4FE0; color: #FFFFFF; }
+
+    /* ── STEP 2: QUESTION PICKER ── */
+    .question-picker {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 0;
+      opacity: 0; max-height: 0; overflow: hidden; transition: opacity 0.25s;
+    }
+    .question-picker.show { opacity: 1; max-height: 400px; margin-bottom: 40px; }
+    .question-btn {
+      background: #FFFFFF; border: 2px solid #E3FAF3; color: #1a2e6e; font-size: 14px; font-weight: 600;
+      padding: 10px 18px; border-radius: 12px; cursor: pointer; transition: all 0.15s; text-align: left;
+    }
+    .question-btn:hover { border-color: #22C98E; }
+    .question-btn.active { background: #22C98E; border-color: #22C98E; color: #FFFFFF; }
+
+    /* ── PHONE + CAPTION ── */
+    .demo-stage { display: flex; gap: 48px; align-items: flex-start; justify-content: center; flex-wrap: wrap; }
+
+    .phone-mockup { width: 300px; background: #1A1A1A; border-radius: 42px; padding: 14px; box-shadow: 0 24px 60px rgba(0,0,0,0.2); flex-shrink: 0; }
+    .phone-screen {
+      background: #F5F8FF; border-radius: 32px; padding: 22px 16px; display: flex; flex-direction: column;
+      align-items: center; gap: 12px; min-height: 480px;
+    }
+    .p-logo { font-size: 19px; font-weight: 800; color: #1a2e6e; }
+    .p-logo span { color: #22C98E; }
+    .p-tagline { font-size: 10px; color: #6B4FE0; font-style: italic; font-weight: 600; margin-top: -10px; margin-bottom: 4px; }
+
+    .p-topRow { display: flex; gap: 6px; width: 100%; }
+    .p-pill {
+      flex: 1; background: #FFFFFF; border: 1.5px solid #6B4FE0; color: #6B4FE0; font-size: 9px;
+      font-weight: 600; padding: 5px 4px; border-radius: 9999px; text-align: center;
+    }
+
+    .p-placeholder { text-align: center; color: #999; font-size: 13px; padding: 60px 20px; }
+
+    .p-content { width: 100%; flex-direction: column; gap: 8px; opacity: 0; transform: translateY(6px); transition: opacity 0.3s, transform 0.3s; display: none; }
+    .p-content.show { opacity: 1; transform: translateY(0); display: flex; }
+
+    .p-badge { align-self: center; background: #1a2e6e; color: #FFFFFF; font-size: 10px; font-weight: 600; padding: 4px 12px; border-radius: 9999px; }
+    .p-block { width: 100%; background: #FFFFFF; border-radius: 10px; padding: 10px 12px; border-left: 4px solid #1a2e6e; }
+    .p-block.green { border-left-color: #22C98E; }
+    .p-block.purple { border-left-color: #6B4FE0; }
+    .p-block-label { font-size: 9px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 3px; }
+    .p-block-text { font-size: 12px; color: #1A1A1A; line-height: 1.4; }
+    .p-block-phonetic { font-size: 13px; color: #1a2e6e; font-weight: 700; }
+    .p-block-header { display: flex; justify-content: space-between; align-items: center; }
+    .p-speaker, .p-mic {
+      color: #FFFFFF; font-size: 11px; padding: 3px 8px; border-radius: 9999px; border: none; cursor: pointer; transition: transform 0.1s;
+    }
+    .p-speaker { background: #22C98E; }
+    .p-mic { background: #6B4FE0; opacity: 0.5; cursor: default; }
+    .p-speaker:hover { transform: scale(1.05); }
+    .p-divider { height: 1px; background: #E0E0E0; margin: 5px 0; }
+
+    .demo-caption { max-width: 300px; padding-top: 30px; }
+    .demo-caption h2 { font-size: 24px; font-weight: 700; color: #1a2e6e; margin-bottom: 14px; }
+    .demo-caption p { font-size: 15px; color: #555; line-height: 1.75; margin-bottom: 16px; }
+    .demo-note { background: #EDE9FF; border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #5538CC; margin-top: 8px; }
+
+    /* ── CTA ── */
+    .cta { padding: 60px 24px; text-align: center; background: linear-gradient(135deg, #6B4FE0 0%, #1a2e6e 100%); color: #FFFFFF; }
+    .cta h2 { font-size: 30px; font-weight: 800; margin-bottom: 12px; }
+    .cta p { font-size: 16px; opacity: 0.85; margin-bottom: 28px; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .btn-white { background: #FFFFFF; color: #6B4FE0; padding: 14px 34px; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-block; }
+
+    footer { background: #1A1A1A; color: #999; text-align: center; padding: 32px 24px; font-size: 14px; }
+    footer a { color: #6B4FE0; text-decoration: none; }
+    .footer-logo { font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+    .footer-logo span { color: #22C98E; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 30px; }
+      .demo-caption { padding-top: 0; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">Xpress<span>Lingo</span></a>
+    <div class="nav-links">
+      <a href="about.html" class="nav-link">About</a>
+      <a href="features.html" class="nav-link">Features</a>
+      <a href="for-business-travelers.html" class="nav-link">Business Travel</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="demo.html" class="nav-link active">Demo</a>
+      <a href="#beta" class="nav-cta">Join Beta</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">🎮 INTERACTIVE DEMO</div>
+    <h1>Try Xpress<span>Lingo</span></h1>
+    <p class="hero-description">Pick a language, then choose something a local might say to you — see exactly how the app responds.</p>
+  </section>
+
+  <!-- DEMO -->
+  <section class="demo-wrap">
+
+    <div class="step-label">Step 1 · Who are you talking to?</div>
+    <div class="lang-picker" id="langPicker"></div>
+
+    <div class="step-label" id="questionStepLabel" style="display:none;">Step 2 · What did they just say?</div>
+    <div class="question-picker" id="questionPicker"></div>
+
+    <div class="demo-stage">
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div style="text-align:center;">
+            <div class="p-logo">Xpress<span>Lingo</span></div>
+            <div class="p-tagline">Speak the World</div>
+          </div>
+          <div class="p-topRow">
+            <div class="p-pill">🗣️ English</div>
+            <div class="p-pill">🇺🇸 USA</div>
+          </div>
+
+          <div class="p-placeholder" id="placeholder">Pick a language above, then tap one of the questions to see it in action.</div>
+
+          <div class="p-content" id="content">
+            <div class="p-badge" id="detectedBadge">🔍 Detected: —</div>
+            <div class="p-block">
+              <div class="p-block-label">🌍 They said</div>
+              <div class="p-block-text" id="theySaidNative" style="color:#1a2e6e; font-weight:600;"></div>
+              <div class="p-divider"></div>
+              <div class="p-block-text" id="theySaidEnglish"></div>
+            </div>
+            <div class="p-block green">
+              <div class="p-block-header">
+                <div class="p-block-label">💬 Suggested response</div>
+                <button class="p-mic" title="In the app, tap here to record your own reply">🎤</button>
+              </div>
+              <div class="p-block-text" id="suggestedText"></div>
+            </div>
+            <div class="p-block purple">
+              <div class="p-block-header">
+                <div class="p-block-label" id="sayThisLabel">🗣️ Say this</div>
+                <button class="p-speaker" id="playPhonetic">🔊</button>
+              </div>
+              <div class="p-block-phonetic" id="phoneticText"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-caption">
+        <h2>This is really how it works</h2>
+        <p>These are five common situations travelers run into — a greeting, asking a price, finding directions, asking for a recommendation, or being offered help. Tap through them to see how XpressLingo breaks each one down.</p>
+        <p>Tap 🔊 to actually hear the pronunciation, spoken aloud using your browser's voice engine.</p>
+        <div class="demo-note">💡 Voice playback quality depends on which voices your browser/OS has installed. In the real app, XpressLingo uses studio-quality AI voices and understands anything you say — not just these five questions.</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="beta">
+    <h2>Ready to try it for real?</h2>
+    <p>Join the beta and take XpressLingo with you on your next trip — free while in beta.</p>
+    <a href="https://testflight.apple.com/join/XPRESSLINGO" class="btn-white" target="_blank">Join the Beta on TestFlight</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Xpress<span>Lingo</span></div>
+    <p>Speak the World</p>
+    <br/>
+    <p>
+      <a href="/">Home</a> &nbsp;|&nbsp;
+      <a href="about.html">About</a> &nbsp;|&nbsp;
+      <a href="features.html">Features</a> &nbsp;|&nbsp;
+      <a href="for-business-travelers.html">Business Travel</a> &nbsp;|&nbsp;
+      <a href="blog.html">Blog</a> &nbsp;|&nbsp;
+      <a href="demo.html">Try Demo</a> &nbsp;|&nbsp;
+      <a href="guide.html">How It Works</a> &nbsp;|&nbsp;
+      <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
+      <a href="https://xpressable.app" target="_blank">XpressAble</a>
+    </p>
+    <br/>
+    <p>Questions? <a href="mailto:malliksanjibk@gmail.com">malliksanjibk@gmail.com</a></p>
+    <br/>
+    <p style="font-size:12px; opacity:0.6;">&copy; 2026 XpressLingo. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Five common traveler situations — same set translated across every language,
+    // so the comparison between languages stays consistent.
+    const QUESTIONS = [
+      { id: 'greeting', icon: '👋', label: 'Greeting' },
+      { id: 'price', icon: '💰', label: 'Asking a price' },
+      { id: 'directions', icon: '🚉', label: 'Directions' },
+      { id: 'recommend', icon: '🍽️', label: 'Recommendation' },
+      { id: 'help', icon: '🙋', label: 'Offering help' },
+    ];
+
+    // Each language: flag, display name, BCP-47 speech code, and one exchange per question id.
+    // native = what the local person said, english = translation, suggested = response (in English),
+    // sayThisNative = that response translated into their language, phonetic = how to say it.
+    const LANGUAGES = {
+      chinese: { flag: '🇨🇳', name: 'Chinese', speechCode: 'zh-CN', exchanges: {
+        greeting:   { native: '你好吗？', english: 'How are you?', suggested: "I'm doing well, thank you!", sayThisNative: '我很好，谢谢！', phonetic: 'Woh hen how, shieh-shieh!' },
+        price:      { native: '这个多少钱？', english: 'How much does this cost?', suggested: "That's a bit expensive. Could you lower the price?", sayThisNative: '有点贵，可以便宜一点吗？', phonetic: 'Yoh-dyen gway, kuh-yee pyen-yee yee-dyen ma?' },
+        directions: { native: '火车站在哪里？', english: 'Where is the train station?', suggested: "Thank you, I'll head that way.", sayThisNative: '谢谢，我往那边走。', phonetic: 'Shieh-shieh, wor wahng nah byen zoh.' },
+        recommend:  { native: '您推荐什么？', english: 'What do you recommend?', suggested: "That sounds great, I'll try it.", sayThisNative: '听起来不错，我尝尝。', phonetic: 'Ting chee-lai boo-tswor, wor chahng chahng.' },
+        help:       { native: '需要帮忙吗？', english: 'Can I help you?', suggested: "Yes please, I'm looking for the market.", sayThisNative: '是的，我在找市场。', phonetic: 'Shir-duh, wor tsigh jow shr-chahng.' },
+      }},
+      japanese: { flag: '🇯🇵', name: 'Japanese', speechCode: 'ja-JP', exchanges: {
+        greeting:   { native: '元気ですか？', english: 'How are you?', suggested: "I'm doing well, thank you!", sayThisNative: '元気です、ありがとう！', phonetic: 'Gen-kee dess, ah-ree-gah-toh!' },
+        price:      { native: 'これはいくらですか？', english: 'How much does this cost?', suggested: "That's a bit expensive. Could you lower the price?", sayThisNative: '少し高いです。安くしてもらえますか？', phonetic: 'Soo-koh-shee tah-kai dess. Yah-soo-koo shee-teh moh-rah-eh-mahs-kah?' },
+        directions: { native: '駅はどこですか？', english: 'Where is the station?', suggested: "Thank you, I'll head that way.", sayThisNative: 'ありがとう、そちらに行きます。', phonetic: 'Ah-ree-gah-toh, soh-chee-rah nee ee-kee-mahs.' },
+        recommend:  { native: 'おすすめは何ですか？', english: 'What do you recommend?', suggested: "That sounds great, I'll try it.", sayThisNative: 'いいですね、試してみます。', phonetic: 'Ee dess neh, tah-meh-shee-teh mee-mahs.' },
+        help:       { native: '何かお手伝いしましょうか？', english: 'Can I help you?', suggested: "Yes please, I'm looking for the market.", sayThisNative: 'はい、市場を探しています。', phonetic: 'Hai, ee-chee-bah oh sah-gah-shee-teh ee-mahs.' },
+      }},
+      korean: { flag: '🇰🇷', name: 'Korean', speechCode: 'ko-KR', exchanges: {
+        greeting:   { native: '어떻게 지내세요?', english: 'How are you?', suggested: "I'm doing well, thank you!", sayThisNative: '잘 지내요, 감사합니다!', phonetic: 'Jal jee-neh-yo, gam-sa-ham-nee-da!' },
+        price:      { native: '이거 얼마예요?', english: 'How much does this cost?', suggested: "That's a bit expensive. Could you lower the price?", sayThisNative: '좀 비싸요. 깎아 주실 수 있어요?', phonetic: 'Jom bee-ssa-yo. Kkah-kkah joo-shil soo iss-uh-yo?' },
+        directions: { native: '기차역이 어디예요?', english: 'Where is the train station?', suggested: "Thank you, I'll head that way.", sayThisNative: '감사합니다, 그쪽으로 갈게요.', phonetic: 'Gam-sa-ham-nee-da, geu-jjok-eu-ro gal-geh-yo.' },
+        recommend:  { native: '뭘 추천하세요?', english: 'What do you recommend?', suggested: "That sounds great, I'll try it.", sayThisNative: '좋아요, 한번 먹어볼게요.', phonetic: 'Joh-ah-yo, han-buhn muh-guh-bol-geh-yo.' },
+        help:       { native: '도와드릴까요?', english: 'Can I help you?', suggested: "Yes please, I'm looking for the market.", sayThisNative: '네, 시장을 찾고 있어요.', phonetic: 'Neh, shee-jang-eul chat-go iss-uh-yo.' },
+      }},
+      spanish: { flag: '🇪🇸', name: 'Spanish', speechCode: 'es-ES', exchanges: {
+        greeting:   { native: '¿Cómo estás?', english: 'How are you?', suggested: "I'm doing well, thank you!", sayThisNative: '¡Estoy bien, gracias!', phonetic: 'Ess-toy byen, grah-syahs!' },
+        price:      { native: '¿Cuánto cuesta esto?', english: 'How much does this cost?', suggested: "That's a bit expensive. Could you lower the price?", sayThisNative: 'Es un poco caro. ¿Puede bajar el precio?', phonetic: 'Ess oon poh-koh kah-roh. Pweh-deh bah-hahr el preh-syoh?' },
+        directions: { native: '¿Dónde está la estación de tren?', english: 'Where is the train station?', suggested: "Thank you, I'll head that way.", sayThisNative: 'Gracias, iré por allí.', phonetic: 'Grah-syahs, ee-reh por ah-yee.' },
+        recommend:  { native: '¿Qué me recomienda?', english: 'What do you recommend?', suggested: "That sounds great, I'll try it.", sayThisNative: 'Suena bien, lo voy a probar.', phonetic: 'Sweh-nah byen, loh voy ah proh-bahr.' },
+        help:       { native: '¿Puedo ayudarle?', english: 'Can I help you?', suggested: "Yes please, I'm looking for the market.", sayThisNative: 'Sí, por favor, busco el mercado.', phonetic: 'See, por fah-vor, boos-koh el mer-kah-doh.' },
+      }},
+      french: { flag: '🇫🇷', name: 'French', speechCode: 'fr-FR', exchanges: {
+        greeting:   { native: 'Comment allez-vous ?', english: 'How are you?', suggested: "I'm doing well, thank you!", sayThisNative: 'Je vais bien, merci !', phonetic: 'Zhuh veh byan, mair-see!' },
+        price:      { native: 'Combien ça coûte ?', english: 'How much does this cost?', suggested: "That's a bit expensive. Could you lower the price?", sayThisNative: "C'est un peu cher. Pouvez-vous baisser le prix ?", phonetic: 'Set-un puh sher. Poo-veh voo beh-seh luh pree?' },
+        directions: { native: 'Où est la gare ?', english: 'Where is the train station?', suggested: "Thank you, I'll head that way.", sayThisNative: "Merci, j'irai par là.", phonetic: 'Mair-see, zhee-reh par lah.' },
+        recommend:  { native: 'Que recommandez-vous ?', english: 'What do you recommend?', suggested: "That sounds great, I'll try it.", sayThisNative: "Ça a l'air bon, je vais essayer.", phonetic: 'Sah ah lair bon, zhuh veh eh-say-yeh.' },
+        help:       { native: 'Puis-je vous aider ?', english: 'Can I help you?', suggested: "Yes please, I'm looking for the market.", sayThisNative: 'Oui, je cherche le marché.', phonetic: 'Wee, zhuh shairsh luh mar-shay.' },
+      }},
+      german: { flag: '🇩🇪', name: 'German', speechCode: 'de-DE', exchanges: {
+        greeting:   { native: 'Wie geht es dir?', english: 'How are you?', suggested: "I'm doing well, thank you!", sayThisNative: 'Mir geht es gut, danke!', phonetic: 'Meer gate ess goot, dahn-kuh!' },
+        price:      { native: 'Wie viel kostet das?', english: 'How much does this cost?', suggested: "That's a bit expensive. Could you lower the price?", sayThisNative: 'Das ist etwas teuer. Können Sie den Preis senken?', phonetic: 'Dahs ist et-vahs toy-er. Kur-nen zee dehn price zen-ken?' },
+        directions: { native: 'Wo ist der Bahnhof?', english: 'Where is the train station?', suggested: "Thank you, I'll head that way.", sayThisNative: 'Danke, ich gehe dorthin.', phonetic: 'Dahn-kuh, ish gay-eh dort-hin.' },
+        recommend:  { native: 'Was empfehlen Sie?', english: 'What do you recommend?', suggested: "That sounds great, I'll try it.", sayThisNative: 'Das klingt gut, ich probiere es.', phonetic: 'Dahs klingt goot, ish proh-bee-reh es.' },
+        help:       { native: 'Kann ich Ihnen helfen?', english: 'Can I help you?', suggested: "Yes please, I'm looking for the market.", sayThisNative: 'Ja bitte, ich suche den Markt.', phonetic: 'Yah bit-tuh, ish zoo-khuh dehn markt.' },
+      }},
+      italian: { flag: '🇮🇹', name: 'Italian', speechCode: 'it-IT', exchanges: {
+        greeting:   { native: 'Come stai?', english: 'How are you?', suggested: "I'm doing well, thank you!", sayThisNative: 'Sto bene, grazie!', phonetic: 'Stoh beh-neh, grah-tsyeh!' },
+        price:      { native: 'Quanto costa questo?', english: 'How much does this cost?', suggested: "That's a bit expensive. Could you lower the price?", sayThisNative: "È un po' caro. Può abbassare il prezzo?", phonetic: 'Eh oon poh kah-roh. Pwoh ah-bah-sah-reh eel pret-tsoh?' },
+        directions: { native: "Dov'è la stazione?", english: 'Where is the station?', suggested: "Thank you, I'll head that way.", sayThisNative: 'Grazie, andrò da quella parte.', phonetic: 'Grah-tsyeh, ahn-droh dah kwell-ah par-teh.' },
+        recommend:  { native: 'Cosa consiglia?', english: 'What do you recommend?', suggested: "That sounds great, I'll try it.", sayThisNative: 'Sembra ottimo, lo provo.', phonetic: 'Sem-brah ot-tee-moh, loh proh-voh.' },
+        help:       { native: 'Posso aiutarla?', english: 'Can I help you?', suggested: "Yes please, I'm looking for the market.", sayThisNative: 'Sì grazie, cerco il mercato.', phonetic: 'See grah-tsyeh, chair-koh eel mer-kah-toh.' },
+      }},
+      portuguese: { flag: '🇵🇹', name: 'Portuguese', speechCode: 'pt-PT', exchanges: {
+        greeting:   { native: 'Como está?', english: 'How are you?', suggested: "I'm doing well, thank you!", sayThisNative: 'Estou bem, obrigado!', phonetic: 'Ish-toh beng, oh-bree-gah-doo!' },
+        price:      { native: 'Quanto custa isto?', english: 'How much does this cost?', suggested: "That's a bit expensive. Could you lower the price?", sayThisNative: 'É um pouco caro. Pode baixar o preço?', phonetic: 'Eh oom poh-koo kah-roo. Poh-deh bye-shar oo preh-soo?' },
+        directions: { native: 'Onde fica a estação?', english: 'Where is the station?', suggested: "Thank you, I'll head that way.", sayThisNative: 'Obrigado, vou por ali.', phonetic: 'Oh-bree-gah-doo, voh por ah-lee.' },
+        recommend:  { native: 'O que recomenda?', english: 'What do you recommend?', suggested: "That sounds great, I'll try it.", sayThisNative: 'Parece ótimo, vou experimentar.', phonetic: 'Pah-reh-seh oh-tee-moo, voh esh-peh-ree-men-tar.' },
+        help:       { native: 'Posso ajudar?', english: 'Can I help you?', suggested: "Yes please, I'm looking for the market.", sayThisNative: 'Sim, procuro o mercado.', phonetic: 'Seeng, proh-koo-roo oo mer-kah-doo.' },
+      }},
+      hindi: { flag: '🇮🇳', name: 'Hindi', speechCode: 'hi-IN', exchanges: {
+        greeting:   { native: 'आप कैसे हैं?', english: 'How are you?', suggested: "I'm doing well, thank you!", sayThisNative: 'मैं ठीक हूँ, धन्यवाद!', phonetic: 'Main theek hoon, dhun-yuh-vaad!' },
+        price:      { native: 'यह कितने का है?', english: 'How much does this cost?', suggested: "That's a bit expensive. Could you lower the price?", sayThisNative: 'यह थोड़ा महंगा है। क्या आप कीमत कम कर सकते हैं?', phonetic: 'Yeh thoh-rah muh-hun-gah hai. Kya aap kee-mut kum kur suk-teh hain?' },
+        directions: { native: 'स्टेशन कहाँ है?', english: 'Where is the station?', suggested: "Thank you, I'll head that way.", sayThisNative: 'धन्यवाद, मैं उस तरफ जाऊँगा।', phonetic: 'Dhun-yuh-vaad, main oos tuh-ruf jah-oon-gah.' },
+        recommend:  { native: 'आप क्या सुझाव देंगे?', english: 'What do you recommend?', suggested: "That sounds great, I'll try it.", sayThisNative: 'अच्छा लगता है, मैं इसे आज़माऊँगा।', phonetic: 'Uch-chah lug-tah hai, main ee-seh aaz-mah-oon-gah.' },
+        help:       { native: 'क्या मैं आपकी मदद कर सकता हूँ?', english: 'Can I help you?', suggested: "Yes please, I'm looking for the market.", sayThisNative: 'जी हाँ, मैं बाज़ार ढूंढ रहा हूँ।', phonetic: 'Jee haan, main bah-zaar dhoondh ruh-hah hoon.' },
+      }},
+      bengali: { flag: '🇧🇩', name: 'Bengali', speechCode: 'bn-BD', exchanges: {
+        greeting:   { native: 'আপনি কেমন আছেন?', english: 'How are you?', suggested: "I'm doing well, thank you!", sayThisNative: 'আমি ভালো আছি, ধন্যবাদ!', phonetic: 'Ah-mee bhah-loh ah-chi, dhon-no-bad!' },
+        price:      { native: 'এটার দাম কত?', english: 'How much does this cost?', suggested: "That's a bit expensive. Could you lower the price?", sayThisNative: 'এটা একটু বেশি দাম। একটু কমাতে পারবেন?', phonetic: 'Eh-tah ek-tu beh-shi dam. Ek-tu kom-ah-teh par-ben?' },
+        directions: { native: 'স্টেশন কোথায়?', english: 'Where is the station?', suggested: "Thank you, I'll head that way.", sayThisNative: 'ধন্যবাদ, আমি ওই দিকে যাচ্ছি।', phonetic: 'Dhon-no-bad, ah-mee oh-i dee-keh jach-chi.' },
+        recommend:  { native: 'আপনি কী সুপারিশ করেন?', english: 'What do you recommend?', suggested: "That sounds great, I'll try it.", sayThisNative: 'ভালো শোনাচ্ছে, আমি চেষ্টা করব।', phonetic: 'Bhah-loh shoh-nach-cheh, ah-mee chesh-tah kor-bo.' },
+        help:       { native: 'আমি কি আপনাকে সাহায্য করতে পারি?', english: 'Can I help you?', suggested: "Yes please, I'm looking for the market.", sayThisNative: 'হ্যাঁ, আমি বাজার খুঁজছি।', phonetic: 'Hyan, ah-mee bah-jar khoo-jchi.' },
+      }},
+      tamil: { flag: '🇱🇰', name: 'Tamil', speechCode: 'ta-IN', exchanges: {
+        greeting:   { native: 'நீங்கள் எப்படி இருக்கிறீர்கள்?', english: 'How are you?', suggested: "I'm doing well, thank you!", sayThisNative: 'நான் நலமாக இருக்கிறேன், நன்றி!', phonetic: 'Naan nal-ah-mah-gah ee-ruk-ki-ren, nan-dri!' },
+        price:      { native: 'இது எவ்வளவு?', english: 'How much does this cost?', suggested: "That's a bit expensive. Could you lower the price?", sayThisNative: 'இது கொஞ்சம் அதிகம். விலையை குறைக்க முடியுமா?', phonetic: 'Ith-uh kon-jum ah-thi-gam. Vi-lai-yai ku-raik-ka mu-di-yu-mah?' },
+        directions: { native: 'ரயில் நிலையம் எங்கே?', english: 'Where is the train station?', suggested: "Thank you, I'll head that way.", sayThisNative: 'நன்றி, நான் அந்த பக்கம் போகிறேன்.', phonetic: 'Nan-dri, naan an-thah pak-kam poh-ki-ren.' },
+        recommend:  { native: 'நீங்கள் என்ன பரிந்துரைக்கிறீர்கள்?', english: 'What do you recommend?', suggested: "That sounds great, I'll try it.", sayThisNative: 'நல்லா இருக்கு, நான் முயற்சி செய்கிறேன்.', phonetic: 'Nal-lah ee-ru-ku, naan mu-yar-chi sey-ki-ren.' },
+        help:       { native: 'நான் உங்களுக்கு உதவலாமா?', english: 'Can I help you?', suggested: "Yes please, I'm looking for the market.", sayThisNative: 'ஆமா, நான் சந்தையை தேடுறேன்.', phonetic: 'Aa-mah, naan san-thai-yai thae-du-ren.' },
+      }},
+      thai: { flag: '🇹🇭', name: 'Thai', speechCode: 'th-TH', exchanges: {
+        greeting:   { native: 'สบายดีไหม?', english: 'How are you?', suggested: "I'm doing well, thank you!", sayThisNative: 'สบายดี ขอบคุณ!', phonetic: 'Sa-bai dee, khop khun!' },
+        price:      { native: 'อันนี้ราคาเท่าไหร่?', english: 'How much does this cost?', suggested: "That's a bit expensive. Could you lower the price?", sayThisNative: 'แพงไปหน่อย ลดราคาได้ไหม?', phonetic: 'Pang bpai noi, lot ra-kaa dai mai?' },
+        directions: { native: 'สถานีรถไฟอยู่ไหน?', english: 'Where is the train station?', suggested: "Thank you, I'll head that way.", sayThisNative: 'ขอบคุณ ฉันจะไปทางนั้น', phonetic: 'Khop khun, chan ja bpai taang nan.' },
+        recommend:  { native: 'คุณแนะนำอะไร?', english: 'What do you recommend?', suggested: "That sounds great, I'll try it.", sayThisNative: 'ฟังดูดี ฉันจะลอง', phonetic: 'Fang doo dee, chan ja long.' },
+        help:       { native: 'ให้ช่วยอะไรไหม?', english: 'Can I help you?', suggested: "Yes please, I'm looking for the market.", sayThisNative: 'ค่ะ ฉันกำลังหาตลาด', phonetic: 'Kha, chan gam-lang haa dta-laat.' },
+      }},
+    };
+
+    const langPicker = document.getElementById('langPicker');
+    const questionPicker = document.getElementById('questionPicker');
+    const questionStepLabel = document.getElementById('questionStepLabel');
+    const placeholder = document.getElementById('placeholder');
+    const content = document.getElementById('content');
+    const detectedBadge = document.getElementById('detectedBadge');
+    const theySaidNative = document.getElementById('theySaidNative');
+    const theySaidEnglish = document.getElementById('theySaidEnglish');
+    const suggestedText = document.getElementById('suggestedText');
+    const phoneticText = document.getElementById('phoneticText');
+    const sayThisLabel = document.getElementById('sayThisLabel');
+    const playPhonetic = document.getElementById('playPhonetic');
+
+    let currentLangKey = null;
+    let currentQuestionId = null;
+
+    // Build language picker
+    Object.keys(LANGUAGES).forEach(key => {
+      const lang = LANGUAGES[key];
+      const btn = document.createElement('button');
+      btn.className = 'lang-btn';
+      btn.textContent = `${lang.flag} ${lang.name}`;
+      btn.addEventListener('click', () => selectLanguage(key, btn));
+      langPicker.appendChild(btn);
+    });
+
+    // Build question picker (labels are static; content updates per language)
+    QUESTIONS.forEach(q => {
+      const btn = document.createElement('button');
+      btn.className = 'question-btn';
+      btn.textContent = `${q.icon} ${q.label}`;
+      btn.addEventListener('click', () => selectQuestion(q.id, btn));
+      questionPicker.appendChild(btn);
+    });
+
+    function selectLanguage(key, btnEl) {
+      currentLangKey = key;
+      currentQuestionId = null;
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+      document.querySelectorAll('.question-btn').forEach(b => b.classList.remove('active'));
+
+      questionStepLabel.style.display = 'block';
+      questionPicker.classList.add('show');
+      placeholder.textContent = `Now tap one of the questions above to see how ${LANGUAGES[key].name} plays out.`;
+      content.classList.remove('show');
+      placeholder.style.display = 'block';
+    }
+
+    function selectQuestion(id, btnEl) {
+      if (!currentLangKey) return;
+      currentQuestionId = id;
+      document.querySelectorAll('.question-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+
+      const lang = LANGUAGES[currentLangKey];
+      const ex = lang.exchanges[id];
+
+      detectedBadge.textContent = `🔍 Detected: ${lang.name}`;
+      theySaidNative.textContent = ex.native;
+      theySaidEnglish.textContent = ex.english;
+      suggestedText.textContent = ex.suggested;
+      sayThisLabel.textContent = `🗣️ Say this in ${lang.name}`;
+      phoneticText.textContent = ex.phonetic;
+
+      placeholder.style.display = 'none';
+      content.classList.add('show');
+
+      speak(ex.native, lang.speechCode);
+    }
+
+    function speak(text, speechCode) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = speechCode;
+      utterance.rate = 0.9;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    playPhonetic.addEventListener('click', () => {
+      if (!currentLangKey || !currentQuestionId) return;
+      const lang = LANGUAGES[currentLangKey];
+      const ex = lang.exchanges[currentQuestionId];
+      speak(ex.sayThisNative, lang.speechCode);
+    });
+  </script>
+
+</body>
+</html>
